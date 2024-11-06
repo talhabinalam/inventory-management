@@ -1,8 +1,10 @@
 {% include 'partial/base.html' %}
 
-<title>{% block title %} Order | Inventory {% endblock %}</title>
+{% block title %} <title>Order | Inventory</title> {% endblock %}
 
 {% block content %}
+    
+    {% include 'partial/topbar.html' %}
     
         <!--Table-->
     <div class="container">

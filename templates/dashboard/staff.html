@@ -1,8 +1,11 @@
 {% extends 'partial/base.html' %}
 
-<title>{% block title %} Staff | Inventory {% endblock %}</title>
+{% block title %} <title>Staff | Inventory</title> {% endblock %}
 
 {% block content %}
+    
+    {% include 'partial/topbar.html' %}
+    
 	    <!--Table-->
     <div class="container">
         <div class="row my-4">

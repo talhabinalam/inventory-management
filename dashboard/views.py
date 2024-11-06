@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
 def index(request):
@@ -14,3 +15,13 @@ def product(request):
 def order(request):
     orders = Order.objects.all()
     return render(request, 'dashboard/order.html', {'orders': orders})
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UserCreationForm()
+    context = {'form': form}
+    return render(request, 'user/register.html', context)
