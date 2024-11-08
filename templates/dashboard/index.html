@@ -4,8 +4,10 @@
 
 {% block content %}
     
+    {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+        
     {% include 'partial/topbar.html' %}
-    
+        
 	    <!--Graphs-->
     <div class="container">
         <div class="row my-5">
@@ -100,4 +102,8 @@
         </div>
     </div>
     <!--End Graphs-->
+    
+    {% else %}
+        {% include 'dashboard/staff-index.html' %}
+    {% endif %}
 {% endblock %}
