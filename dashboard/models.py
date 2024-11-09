@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 CHOICES = (
     ('Stationary', 'Stationary'),
     ('Electronics', 'Electronics'),
-    ('Furniture', 'Furniture')
+    ('Furniture', 'Furniture'),
+    ('Medicine', 'Medicine')
 )
 
 class Product(models.Model):

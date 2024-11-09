@@ -10,17 +10,8 @@
 
             </div>
             <div class="col-md-8">
-                    <!--Bootstrap message-->
-                    {% if messages %}
-                        {% for message in messages %}
-                        <div id="message" class="container">
-                            <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
-                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-                            {{ message }}
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
+            
+            {% include 'partial/message.html' %}
             
                 <div class="card">
                     <div class="card-header bg-info text-white">
