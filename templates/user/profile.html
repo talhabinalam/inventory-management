@@ -1,44 +1,64 @@
+{% extends 'partial/base.html' %}
+{% block title %} <title> Profile | Inventory </title> {% endblock %}
+
+{% block content %}
+
     <!--Table-->
     <div class="container">
         <div class="row my-4">
-            <div class="col-md-4">
+            <div class="col-md-2">
 
             </div>
             <div class="col-md-8">
+                    <!--Bootstrap message-->
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div id="message" class="container">
+                            <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                            {{ message }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+            
                 <div class="card">
                     <div class="card-header bg-info text-white">
-                        Profile Page
+                        Profile
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
                                 <span class="h4"> Profile Information</span> <a class="btn btn-info btn-sm float-right"
-                                    href="">Edit</a>
+                                    href="{% url 'update-profile' %}">Edit</a>
                                 <hr>
                                 <table class="table bg-white table-borderless">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Name</th>
-                                            <td>Mark</td>
+                                            <td>{{ user.username }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Email</th>
-                                            <td>mark123@gmail.com</td>
+                                            <td>{{ user.email }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Phone</th>
-                                            <td>00992283833</td>
+                                            <td>{{ user.profile.phone }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Address</th>
-                                            <td>House Number 22 Dr. Ababio Street Ghana</td>
+                                            <td>{{ user.profile.address }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
-
                             </div>
                             <div class="col-md-4">
-                                <img class="img-thumbnail" src="./media/profile-img1.jpg" alt="">
+                                {% if user.profile.image %}
+                                    <img class="profile-image img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile picture">
+                                {% else %}
+                                    <img class="profile-image" src="/media/avatar.jpg" alt="Default Profile picture">
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -50,3 +70,5 @@
     </div>
 
     <!--End Table-->
+
+{% endblock %}

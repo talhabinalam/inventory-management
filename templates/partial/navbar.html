@@ -24,7 +24,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item active">
-                        <a class="nav-link text-white" href="profile.html">{{ request.user.username }}<span
+                        <a class="nav-link text-white" href="{% url 'profile' %}">{{ request.user.username }}<span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
