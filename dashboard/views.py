@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
-from user.forms import ProfileUpdateForm
+from user.models import Profile
 from .models import *
 from .forms import *
 
@@ -13,7 +14,14 @@ def index(request):
 
 @login_required
 def staff(request):
-    return render(request, 'dashboard/staff.html')
+    staff = User.objects.all()
+    return render(request, 'dashboard/staff.html', {'staff':staff})
+
+
+@login_required
+def staff_details(request, pk):
+    staff = Profile.objects.get(pk=pk)
+    return render(request, 'dashboard/staff-details.html', {'staff':staff})
 
 
 @login_required

@@ -1,0 +1,68 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} <title>Staff | Inventory</title> {% endblock %}
+
+{% block content %}
+    
+    {% include 'partial/topbar.html' %}
+
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-8">
+            
+            {% include 'partial/message.html' %}
+            
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Profile
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <span class="h4"> Profile Information</span> <a class="btn btn-info btn-sm float-right"
+                                    href="{% url 'update-profile' %}">Edit</a>
+                                <hr>
+                                <table class="table bg-white table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Name</th>
+                                            <td>{{ user.username }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <td>{{ user.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Phone</th>
+                                            <td>{{ user.profile.phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Address</th>
+                                            <td>{{ user.profile.address }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                {% if user.profile.image %}
+                                    <img class="profile-image img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile picture">
+                                {% else %}
+                                    <img class="profile-image" src="/media/avatar.jpg" alt="Default Profile picture">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--End Table-->
+
+{% endblock %}
