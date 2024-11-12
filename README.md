@@ -37,9 +37,21 @@ This Inventory Management System is a web application built with Django for mana
    cd inventory-management
    ```
 2. Set Up a Virtual Environment Create a virtual environment to isolate dependencies.
-bash```
-python -m venv venv
-source venv/bin/activate   # On macOS/Linux
-venv\Scripts\activate      # On Windows
-```
-   
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # On macOS/Linux
+   venv\Scripts\activate      # On Windows
+   ```
+3. Install Dependencies Install all required dependencies from requirements.txt
+   ```bash  
+   pip install -r requirements.txt
+   ```
+4. Apply Migrations Set up the database by applying migrations (For new database).
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+5. Create an admin user to access the management features.
+   ```bash  
+   python manage.py createsuperuser
+   ```
