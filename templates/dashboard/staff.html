@@ -24,7 +24,7 @@
                     
                     {% for staff in staff %}
                         <tr>
-                            <th scope="row"><a class="btn btn-info btn-sm" href="{% url 'staff-details' staff.id %}">View</a></th>
+                            <th scope="row"><a class="btn btn-info btn-sm" href="{% url 'staff-details' staff.pk %}">View</a></th>
                             <td>{{ staff.username }}</td>
                             <td>{{ staff.email }}</td>
                             <td>{{ staff.profile.phone }}</td>

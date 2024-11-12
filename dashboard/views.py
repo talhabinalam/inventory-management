@@ -1,3 +1,4 @@
+from lib2to3.fixes.fix_input import context
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -32,12 +33,15 @@ def index(request):
 @login_required
 def staff(request):
     staff = User.objects.all()
-    return render(request, 'dashboard/staff.html', {'staff':staff})
+    context = {
+        'staff' : staff,
+    }
+    return render(request, 'dashboard/staff.html', context)
 
 
 @login_required
-def staff_details(request, id):
-    staff = User.objects.get(id=id)
+def staff_details(request, pk):
+    staff = User.objects.get(pk=pk)
     return render(request, 'dashboard/staff-details.html', {'staff':staff})
 
 
@@ -88,7 +92,10 @@ def delete_product(request, id):
 @login_required
 def order(request):
     orders = Order.objects.all()
-    return render(request, 'dashboard/order.html', {'orders': orders})
+    context = {
+        'orders' : orders,
+    }
+    return render(request, 'dashboard/order.html', context)
 
 
 
