@@ -21,16 +21,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                    
+                    {% for staff in staff %}
                         <tr>
-                            {% for staff in staff %}
-                            
                             <th scope="row"><a class="btn btn-info btn-sm" href="{% url 'staff-details' staff.id %}">View</a></th>
                             <td>{{ staff.username }}</td>
                             <td>{{ staff.email }}</td>
                             <td>{{ staff.profile.phone }}</td>
-                                                        	
-                            {% endfor %}
                         </tr>
+                            {% endfor %}
+                    
                     </tbody>
                 </table>
             </div>

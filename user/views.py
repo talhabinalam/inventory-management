@@ -6,10 +6,15 @@ from django.contrib.auth import login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from dashboard.models import Product
+from dashboard.views import product
 from .forms import *
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -23,6 +28,9 @@ def register(request):
 
 
 def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -40,10 +48,12 @@ def user_logout(request):
     return redirect('login')
 
 
+@login_required
 def profile(request):
     return render(request, 'user/profile.html')
 
 
+@login_required
 def update_profile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)

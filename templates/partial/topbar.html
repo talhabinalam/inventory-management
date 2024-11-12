@@ -8,7 +8,7 @@
                     </div>
                     <div class="card-body">
                         <marquee behavior="" direction="">
-                            <h3 class="my-4">This is the Information</h3>
+                            <h3 class="my-4">Inventory Management System</h3>
                         </marquee>
                     </div>
                 </div>
@@ -37,7 +37,11 @@
                                 </a>
                             </div>
                             <div class="col-md-4">
+                                {% if request.user.is_superuser %}
                                 <a class="text-decoration-none text-dark" href="{% url 'order' %}">
+                                    {% else %}
+                                    <a class="text-decoration-none text-dark" href="{% url 'dashboard' %}">
+                                {% endif %} 
                                     <div class="card my-card shadow text-center p-3">
                                         <h4>Orders <i class="fas fa-shipping-fast"></i></h4>
                                         <h3>4</h3>

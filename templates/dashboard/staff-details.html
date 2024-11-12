@@ -23,33 +23,35 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
-                                <span class="h4"> Profile Information</span> <a class="btn btn-info btn-sm float-right"
-                                    href="{% url 'update-profile' %}">Edit</a>
+                                <span class="h4"> Profile Information</span> 
+                                {% if staff == user  %}
+                                <a class="btn btn-info btn-sm float-right" href="{% url 'update-profile' %}">Edit</a>
+                                {% endif %} 
                                 <hr>
                                 <table class="table bg-white table-borderless">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Name</th>
-                                            <td>{{ user.username }}</td>
+                                            <td>{{ staff.username }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Email</th>
-                                            <td>{{ user.email }}</td>
+                                            <td>{{ staff.email }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Phone</th>
-                                            <td>{{ user.profile.phone }}</td>
+                                            <td>{{ staff.profile.phone }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Address</th>
-                                            <td>{{ user.profile.address }}</td>
+                                            <td>{{ staff.profile.address }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col-md-4">
-                                {% if user.profile.image %}
-                                    <img class="profile-image img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile picture">
+                                {% if staff.profile.image %}
+                                    <img class="profile-image img-thumbnail" src="{{ staff.profile.image.url }}" alt="Profile picture">
                                 {% else %}
                                     <img class="profile-image" src="/media/avatar.jpg" alt="Default Profile picture">
                                 {% endif %}

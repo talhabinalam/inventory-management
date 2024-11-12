@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -7,9 +9,24 @@ from user.models import Profile
 from .models import *
 from .forms import *
 
+
 @login_required
 def index(request):
-    return render(request, 'dashboard/index.html')
+    order = Order.objects.all()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.staff = request.user
+            instance.save()
+            return redirect('dashboard')
+    else:
+        form=OrderForm()
+    context = {
+        'order' : order,
+        'form' : form
+    }
+    return render(request, 'dashboard/index.html', context)
 
 
 @login_required
@@ -19,8 +36,8 @@ def staff(request):
 
 
 @login_required
-def staff_details(request, pk):
-    staff = Profile.objects.get(pk=pk)
+def staff_details(request, id):
+    staff = User.objects.get(id=id)
     return render(request, 'dashboard/staff-details.html', {'staff':staff})
 
 
@@ -70,5 +87,7 @@ def delete_product(request, id):
 def order(request):
     orders = Order.objects.all()
     return render(request, 'dashboard/order.html', {'orders': orders})
+
+
 
 
