@@ -19,17 +19,31 @@
                         var myChart1 = new Chart(ctx, {
                             type: 'pie',
                             data: {
-                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                labels: [{% for order in orders %} "{{ order.product.name }}", {% endfor %}],
                                 datasets: [{
-                                    label: 'Products',
-                                    data: [12, 19, 3, 5, 2, 3],
+                                    label: 'Orders',
+                                    data: [{% for order in orders %} "{{ order.quantity }}", {% endfor %}],
                                     backgroundColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
+                                        'rgba(255, 99, 132, 1)',    // Soft Red
+                                        'rgba(54, 162, 235, 1)',    // Light Blue
+                                        'rgba(255, 206, 86, 1)',    // Yellow
+                                        'rgba(75, 192, 192, 1)',    // Teal
+                                        'rgba(153, 102, 255, 1)',   // Lavender
+                                        'rgba(255, 159, 64, 1)',    // Orange
+                                        'rgba(255, 99, 71, 1)',     // Tomato Red
+                                        'rgba(60, 179, 113, 1)',    // Medium Sea Green
+                                        'rgba(218, 112, 214, 1)',   // Orchid
+                                        'rgba(123, 104, 238, 1)',   // Medium Slate Blue
+                                        'rgba(0, 191, 255, 1)',     // Deep Sky Blue
+                                        'rgba(127, 255, 212, 1)',   // Aquamarine
+                                        'rgba(255, 228, 196, 1)',   // Bisque
+                                        'rgba(255, 182, 193, 1)',   // Light Pink
+                                        'rgba(240, 128, 128, 1)',   // Light Coral
+                                        'rgba(173, 216, 230, 1)',   // Light Blue
+                                        'rgba(152, 251, 152, 1)',   // Pale Green
+                                        'rgba(221, 160, 221, 1)',   // Plum
+                                        'rgba(255, 140, 0, 1)',     // Dark Orange
+                                        'rgba(255, 215, 0, 1)'      // Gold
                                     ],
                                     borderColor: [
                                         'rgba(255, 99, 132, 1)',
@@ -37,8 +51,23 @@
                                         'rgba(255, 206, 86, 1)',
                                         'rgba(75, 192, 192, 1)',
                                         'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(255, 99, 71, 1)',
+                                        'rgba(60, 179, 113, 1)',
+                                        'rgba(218, 112, 214, 1)',
+                                        'rgba(123, 104, 238, 1)',
+                                        'rgba(0, 191, 255, 1)',
+                                        'rgba(127, 255, 212, 1)',
+                                        'rgba(255, 228, 196, 1)',
+                                        'rgba(255, 182, 193, 1)',
+                                        'rgba(240, 128, 128, 1)',
+                                        'rgba(173, 216, 230, 1)',
+                                        'rgba(152, 251, 152, 1)',
+                                        'rgba(221, 160, 221, 1)',
+                                        'rgba(255, 140, 0, 1)',
+                                        'rgba(255, 215, 0, 1)'
                                     ],
+
                                     borderWidth: 1
                                 }]
                             },
@@ -63,17 +92,31 @@
                         var myChart = new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                labels: [{% for product in products %} "{{ product.name }}", {% endfor %}],
                                 datasets: [{
                                     label: 'Products',
-                                    data: [12, 19, 3, 5, 2, 3],
+                                    data: [{% for product in products %} "{{ product.quantity }}", {% endfor %}],
                                     backgroundColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
+                                        'rgba(255, 99, 132, 1)',    // Soft Red
+                                        'rgba(54, 162, 235, 1)',    // Light Blue
+                                        'rgba(255, 206, 86, 1)',    // Yellow
+                                        'rgba(75, 192, 192, 1)',    // Teal
+                                        'rgba(153, 102, 255, 1)',   // Lavender
+                                        'rgba(255, 159, 64, 1)',    // Orange
+                                        'rgba(255, 99, 71, 1)',     // Tomato Red
+                                        'rgba(60, 179, 113, 1)',    // Medium Sea Green
+                                        'rgba(218, 112, 214, 1)',   // Orchid
+                                        'rgba(123, 104, 238, 1)',   // Medium Slate Blue
+                                        'rgba(0, 191, 255, 1)',     // Deep Sky Blue
+                                        'rgba(127, 255, 212, 1)',   // Aquamarine
+                                        'rgba(255, 228, 196, 1)',   // Bisque
+                                        'rgba(255, 182, 193, 1)',   // Light Pink
+                                        'rgba(240, 128, 128, 1)',   // Light Coral
+                                        'rgba(173, 216, 230, 1)',   // Light Blue
+                                        'rgba(152, 251, 152, 1)',   // Pale Green
+                                        'rgba(221, 160, 221, 1)',   // Plum
+                                        'rgba(255, 140, 0, 1)',     // Dark Orange
+                                        'rgba(255, 215, 0, 1)'      // Gold
                                     ],
                                     borderColor: [
                                         'rgba(255, 99, 132, 1)',
@@ -81,7 +124,21 @@
                                         'rgba(255, 206, 86, 1)',
                                         'rgba(75, 192, 192, 1)',
                                         'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(255, 99, 71, 1)',
+                                        'rgba(60, 179, 113, 1)',
+                                        'rgba(218, 112, 214, 1)',
+                                        'rgba(123, 104, 238, 1)',
+                                        'rgba(0, 191, 255, 1)',
+                                        'rgba(127, 255, 212, 1)',
+                                        'rgba(255, 228, 196, 1)',
+                                        'rgba(255, 182, 193, 1)',
+                                        'rgba(240, 128, 128, 1)',
+                                        'rgba(173, 216, 230, 1)',
+                                        'rgba(152, 251, 152, 1)',
+                                        'rgba(221, 160, 221, 1)',
+                                        'rgba(255, 140, 0, 1)',
+                                        'rgba(255, 215, 0, 1)'
                                     ],
                                     borderWidth: 1
                                 }]

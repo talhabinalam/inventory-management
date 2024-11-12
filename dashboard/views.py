@@ -1,18 +1,17 @@
-from lib2to3.fixes.fix_input import context
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from user.models import Profile
 from .models import *
 from .forms import *
 
 
 @login_required
 def index(request):
-    order = Order.objects.all()
+    orders = Order.objects.all()
+    products = Product.objects.all()
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -23,7 +22,8 @@ def index(request):
     else:
         form=OrderForm()
     context = {
-        'order' : order,
+        'orders' : orders,
+        'products' : products,
         'form' : form
     }
     return render(request, 'dashboard/index.html', context)
@@ -59,6 +59,7 @@ def product(request):
     return render(request, 'dashboard/product.html', context)
 
 
+@login_required
 def update_product(request, id):
     product = get_object_or_404(Product, id=id)
     if request.method == 'POST':
@@ -76,6 +77,7 @@ def update_product(request, id):
     return render(request, 'dashboard/product-update.html', context)
 
 
+@login_required
 def delete_product(request, id):
     product = Product.objects.get(id=id)
     product.delete()

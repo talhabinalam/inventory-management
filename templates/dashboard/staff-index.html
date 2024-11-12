@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col-md-4">
+                <div class="card-header" style="background-color: #17A2B8">
+                    Make an order
+                </div>
             <div class="card">
                 <div class="card-body">
                     <form method="POST">
@@ -31,8 +34,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                        
-                            {% for order in order %}
+
+                            {% for order in orders %}
                                 {% if order.staff == user %}
                             <tr>
                                 <td>{{ order.product.name }}</td>
@@ -41,9 +44,9 @@
                                 <td>{{ order.staff }}</td>
                                 <td>{{ order.date }}</td>
                             </tr>
-                                {% endif %} 
+                                {% endif %}
                             {% endfor %}
-                        
+
                         </tbody>
                     </table>
                 </div>
