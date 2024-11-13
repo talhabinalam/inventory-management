@@ -55,3 +55,35 @@ This Inventory Management System is a web application built with Django for mana
    ```bash  
    python manage.py createsuperuser
    ```
+6. Run the Development Server Start the Django development server.
+   ```bash  
+   python manage.py runserver
+   ```
+
+## Project Structure
+* **views.py**: Defines views for handling CRUD operations, authentication, and staff, product, and order management.
+* **models.py**: Contains models for Product, Order, and User, capturing the essential fields for each entity.
+* **templates/**: HTML templates for the dashboard, product, order, and user interfaces.
+* **urls.py**: URL routes for the application, linking views to accessible endpoints.
+
+## Usage
+
+### Admin Access
+Admins have full access to:
+* **Manage Products**: Add, edit, or delete product entries.
+* **Track Orders**: View all orders and record new orders.
+* **Oversee Staff**: View staff lists and individual details.
+
+### User Access
+Regular users can:
+* **View Products**: Access the list of available products.
+* **View Orders**: Check the list of orders but without editing rights.
+
+## Requirements
+
+The `requirements.txt` file contains all necessary Python packages. Major dependencies include:
+* **Django**: Framework for building the application.
+* **Bootstrap**: Integrated for styling and responsive design in templates.
+
+## Overview
+![Screenshot 2024-11-13 182433](https://github.com/user-attachments/assets/a7cc3ac5-78ed-4719-87da-d867b1c063e9)
