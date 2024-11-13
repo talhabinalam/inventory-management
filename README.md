@@ -46,16 +46,34 @@ This Inventory Management System is a web application built with Django for mana
    ```bash  
    pip install -r requirements.txt
    ```
-4. Apply Migrations Set up the database by applying migrations (For new database).
+4. Configure PostgreSQL for the Inventory project by following these steps:
+
+   - Ensure PostgreSQL is installed and running on your machine.
+
+   PostgreSQL Database setup:
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'inventory_db',
+           'USER': 'inventory_user',
+           'PASSWORD': 'yourpassword',
+           'HOST': 'localhost',
+           'PORT': '5432',
+       }
+   }
+   ```
+
+5. Apply Migrations Set up the database by applying migrations (For new database).
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
-5. Create an admin user to access the management features.
+6. Create an admin user to access the management features.
    ```bash  
    python manage.py createsuperuser
    ```
-6. Run the Development Server Start the Django development server.
+7. Run the Development Server Start the Django development server.
    ```bash  
    python manage.py runserver
    ```
