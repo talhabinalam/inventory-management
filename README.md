@@ -38,9 +38,9 @@ This Inventory Management System is a web application built with Django for mana
    ```
 2. Set Up a Virtual Environment Create a virtual environment to isolate dependencies.
    ```bash
-   python -m venv venv
+   python -m venv env
    source venv/bin/activate   # On macOS/Linux
-   venv\Scripts\activate      # On Windows
+   env\Scripts\activate      # On Windows
    ```
 3. Install Dependencies Install all required dependencies from requirements.txt
    ```bash  
