@@ -86,4 +86,6 @@ The `requirements.txt` file contains all necessary Python packages. Major depend
 * **Bootstrap**: Integrated for styling and responsive design in templates.
 
 ## Overview
-![Screenshot 2024-11-13 182433](https://github.com/user-attachments/assets/a7cc3ac5-78ed-4719-87da-d867b1c063e9)
+![Screenshot 2024-11-13 183018](https://github.com/user-attachments/assets/f529f882-f3bd-404f-aa82-4b12a6da153d)
+
+
