@@ -30,11 +30,11 @@ This Inventory Management System is a web application built with Django for mana
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/talhabinalam/inventory-management.git
+   git clone https://github.com/talhabinalam/inventory-management-system.git
    ```
    Navigate to the project directory:
    ```bash
-   cd inventory-management
+   cd inventory-management-system
    ```
 2. Set Up a Virtual Environment Create a virtual environment to isolate dependencies.
    ```bash
